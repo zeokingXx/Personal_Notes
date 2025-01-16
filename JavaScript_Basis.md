@@ -8,25 +8,32 @@ JavaScript 程序不能独立运行，它需要被嵌入 HTML 中，然后浏览
 
 通过 `script` 标签包裹 JavaScript 代码
 
+有三个位置可供使用，在学习调试时候用，项目开发一般使用外部形式
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>JavaScript 基础 - 引入方式</title>
+  <script>
+      alert("我是js,我生效了。");
+  </script>
 </head>
 <body>
-  <!-- 内联形式：通过 script 标签包裹 JavaScript 代码 -->
   <script>
     alert('嗨，欢迎来传智播学习前端技术！')
   </script>
 </body>
+    <script>
+        alert("我是js,我生效了。");
+    </script>
 </html>
 ```
 
 ### 外部形式
 
-一般将 JavaScript 代码写在独立的以 .js 结尾的文件中，然后通过 `script` 标签的 `src` 属性引入
+一般将 JavaScript 代码写在独立的以 .js 结尾的文件中，然后通过 script 的 src 属性引入独立的 .js 文件
 
 ```javascript
 // demo.js
@@ -39,15 +46,15 @@ document.write('嗨，欢迎来传智播学习前端技术！')
 <head>
   <meta charset="UTF-8">
   <title>JavaScript 基础 - 引入方式</title>
+  <script src="./demo.js"></script>
 </head>
 <body>
-  <!-- 外部形式：通过 script 的 src 属性引入独立的 .js 文件 -->
-  <script src="demo.js"></script>
+    
 </body>
 </html>
 ```
 
-如果 script 标签使用 src 属性引入了某 .js 文件，那么 标签的代码会被忽略！！！如下代码所示：
+**注意：如果 script 标签使用 src 属性引入了某 .js 文件，那么标签的代码会被忽略！！！**
 
 ```html
 <!DOCTYPE html>
@@ -55,10 +62,11 @@ document.write('嗨，欢迎来传智播学习前端技术！')
 <head>
   <meta charset="UTF-8">
   <title>JavaScript 基础 - 引入方式</title>
+  <script src="demo.js"></script>
 </head>
+    
 <body>
-  <!-- 外部形式：通过 script 的 src 属性引入独立的 .js 文件 -->
-  <script src="demo.js">
+  <script>
     // 此处的代码会被忽略掉！！！！
   	alert(666);  
   </script>
@@ -81,8 +89,8 @@ document.write('嗨，欢迎来传智播学习前端技术！')
   <meta charset="UTF-8">
   <title>JavaScript 基础 - 注释</title>
 </head>
+    
 <body>
-  
   <script>
     // 这种是单行注释的语法
     // 一次只能注释一行
@@ -90,6 +98,7 @@ document.write('嗨，欢迎来传智播学习前端技术！')
     document.write('嗨，欢迎来传智播学习前端技术！');
   </script>
 </body>
+    
 </html>
 ```
 
@@ -104,8 +113,8 @@ document.write('嗨，欢迎来传智播学习前端技术！')
   <meta charset="UTF-8">
   <title>JavaScript 基础 - 注释</title>
 </head>
+    
 <body>
-  
   <script>
     /* 这种的是多行注释的语法 */
     /*
@@ -116,6 +125,7 @@ document.write('嗨，欢迎来传智播学习前端技术！')
     document.write('嗨，欢迎来传智播学习前端技术！')
   </script>
 </body>
+    
 </html>
 ```
 
@@ -123,7 +133,11 @@ document.write('嗨，欢迎来传智播学习前端技术！')
 
 ### 结束符
 
-在 JavaScript 中 `;` 代表一段代码的结束，多数情况下可以省略 `;` 使用回车（enter）替代。
+在 JavaScript 中 `;` 代表一段代码的结束。
+
+**多数情况下可以省略 `;` 使用回车（enter）替代**
+
+**实际开发中有许多人主张书写 JavaScript 代码时省略结束符 `;`**
 
 ```html
 <!DOCTYPE html>
@@ -132,37 +146,20 @@ document.write('嗨，欢迎来传智播学习前端技术！')
   <meta charset="UTF-8">
   <title>JavaScript 基础 - 结束符</title>
 </head>
+    
 <body>
-  
   <script> 
     alert(1);
     alert(2);
-    alert(1)
-    alert(2)
+    /*alert(1)
+    alert(2)*/
   </script>
 </body>
+    
 </html>
 ```
 
-实际开发中有许多人主张书写 JavaScript 代码时省略结束符 `;`
-
 ## 三.输入和输出
-
-输出和输入也可理解为人和计算机的交互，用户通过键盘、鼠标等向计算机输入信息，计算机处理后再展示结果给用户，这便是一次输入和输出的过程。
-
-举例说明：如按键盘上的方向键，向上/下键可以滚动页面，按向上/下键这个动作叫作输入，页面发生了滚动了这便叫输出。
-
-### 输出
-
-JavaScript 可以接收用户的输入，然后再将输入的结果输出：
-
-`alert()`、`document.wirte()`
-
-以数字为例，向 `alert()` 或 `document.write()`输入任意数字，他都会以弹窗形式展示（输出）给用户。
-
-###  输入
-
-向 `prompt()` 输入任意内容会以弹窗形式出现在浏览器中，一般提示用户输入一些内容。
 
 ```html
 <!DOCTYPE html>
@@ -171,17 +168,19 @@ JavaScript 可以接收用户的输入，然后再将输入的结果输出：
   <meta charset="UTF-8">
   <title>JavaScript 基础 - 输入输出</title>
 </head>
+    
 <body>
-  
   <script> 
-    // 1. 输入的任意数字，都会以弹窗形式展示
+    // 1. 输入的任意内容，都会以弹窗形式展示
     document.write('要输出的内容')
     alert('要输出的内容');
 
-    // 2. 以弹窗形式提示用户输入姓名，注意这里的文字使用英文的引号
+    // 2. 输入任意内容会以弹窗形式出现在浏览器中，一般提示用户输入一些内容。
     prompt('请输入您的姓名:')
+    // 3.注意使用英文的引号
   </script>
 </body>
+    
 </html>
 ```
 
@@ -189,84 +188,53 @@ JavaScript 可以接收用户的输入，然后再将输入的结果输出：
 
 > 理解变量是计算机存储数据的“容器”，掌握变量的声明方式
 
-变量是计算机中用来存储数据的“容器”，它可以让计算机变得有记忆，通俗的理解变量就是使用【某个符号】来代表【某个具体的数值】（数据）
-
-```html
+```javascript
 <script>
-  // x 符号代表了 5 这个数值
-  x = 5
-  // y 符号代表了 6 这个数值
-  y = 6
-    
-  //举例： 在 JavaScript 中使用变量可以将某个数据（数值）记录下来！
+  var a; 
+  a = 1; 
+  //var是变量的类型，表示可以是任何类型
+  
+  var b = 2;
+  // 声明变量的同时进行赋值var b = 2;
+  //number型
+
+  //let声明变量
+  let age;
+  age = 18;
+  let name = "LiHua";
+
+  var str1;
+  str1 = "你好,我是字符串1";
+  var str2 = "你好,我是字符串2";
+  //String型
+  
+  var flag = true; 
+  //表示这是一个真值
+  var flag = false;
+  //表示这是一个假值
+  //bool型
+  
+  var a;
+  console.log(a); 
+  //声明但是不定义的类型
 
   // 将用户输入的内容保存在 num 这个变量（容器）中
-  num = prompt('请输入一数字!')
-
+  num = prompt('请输入一数字!');
   // 通过 num 变量（容器）将用户输入的内容输出出来
-  alert(num)
-  document.write(num)
+  alert(num);
+  /*document.write(num)*/
 </script>
 ```
 
 ### 声明
 
-声明(定义)变量有两部分构成：声明关键字、变量名（标识）
+声明(定义)变量有两部分构成：声明关键字、变量名（标识符）
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>JavaScript 基础 - 声明和赋值</title>
-</head>
-<body>
-  
-  <script> 
-    // let 变量名
-    // 声明(定义)变量有两部分构成：声明关键字、变量名（标识）
-    // let 即关键字，所谓关键字是系统提供的专门用来声明（定义）变量的词语
-    // age 即变量的名称，也叫标识符
-    let age
-  </script>
-</body>
-</html>
-```
-
-关键字是 JavaScript 中内置的一些英文词汇（单词或缩写），它们代表某些特定的含义，如 `let` 的含义是声明变量的，看到 `let`  后就可想到这行代码的意思是在声明变量，如 `let age;` 
-
-`let` 和 `var` 都是 JavaScript 中的声明变量的关键字，推荐使用 `let` 声明变量！！！
+**注意：`let` 和 `var` 都是 JavaScript 中的声明变量的关键字，推荐使用 `let` 声明变量！！！**
 
 ### 赋值
 
 声明（定义）变量相当于创造了一个空的“容器”，通过赋值向这个容器中添加数据。
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>JavaScript 基础 - 声明和赋值</title>
-</head>
-<body>
-  
-  <script> 
-    // 声明(定义)变量有两部分构成：声明关键字、变量名（标识）
-    // let 即关键字，所谓关键字是系统提供的专门用来声明（定义）变量的词语
-    // age 即变量的名称，也叫标识符
-    let age
-    // 赋值，将 18 这个数据存入了 age 这个“容器”中
-    age = 18
-    // 这样 age 的值就成了 18
-    document.write(age)
-    
-    // 也可以声明和赋值同时进行
-    let str = 'hello world!'
-    alert(str);
-  </script>
-</body>
-</html>
-```
 
 ### 关键字
 
@@ -274,24 +242,25 @@ JavaScript 使用专门的关键字 `let` 和 `var` 来声明（定义）变量�
 
 以下是使用 `let` 时的注意事项：
 
-1. 允许声明和赋值同时进行
-2. 不允许重复声明
-3. 允许同时声明多个变量并赋值
-4. JavaScript 中内置的一些关键字不能被当做变量名
+1. **允许声明和赋值同时进行**
+2. **不允许重复声明**
+3. **允许同时声明多个变量并赋值**
+4. **JavaScript 中内置的一些关键字不能被当做变量名**
 
 以下是使用 `var` 时的注意事项：
 
-2. 允许声明和赋值同时进行
-3. 允许重复声明
-4. 允许同时声明多个变量并赋值
+1. **允许声明和赋值同时进行**
 
-大部分情况使用 `let` 和 `var` 区别不大，但是 `let` 相较 `var` 更严谨，因此推荐使用 `let`，后期会更进一步介绍二者间的区别。
+2. **允许重复声明**
+3. **允许同时声明多个变量并赋值**
+
+**大部分情况使用 `let` 和 `var` 区别不大，但是 `let` 相较 `var` 更严谨，因此推荐使用 `let`，后期会更进一步介绍二者间的区别。**
 
 ### 变量名命名规则
 
 关于变量的名称（标识符）有一系列的规则需要遵守：
 
-1. 只能是字母、数字、下划线、$，且不能能数字开头
+1. 只能是字母、数字、下划线、$，且不能以数字开头
 2. 字母区分大小写，如 Age 和 age 是不同的变量
 3. JavaScript 内部已占用于单词（关键字或保留字）不允许使用
 4. 尽量保证变量具有一定的语义，见字知义
@@ -312,7 +281,7 @@ JavaScript 使用专门的关键字 `let` 和 `var` 来声明（定义）变量�
     let age1 = 18 // 正确
     let _age = 18 // 正确
 
-    // let 1age = 18; // 错误，不可以数字开头
+    //let 1age = 18; // 错误，不可以数字开头
     let $age = 18 // 正确
     let Age = 24 // 正确，它与小写的 age 是不同的变量
     // let let = 18; // 错误，let 是关键字
@@ -332,13 +301,10 @@ JavaScript 使用专门的关键字 `let` 和 `var` 来声明（定义）变量�
 
 ~~~javascript
 const PI = 3.14
+/*注意： 常量不允许重新赋值,声明的时候必须赋值（初始化）*/
 ~~~
 
->注意： 常量不允许重新赋值,声明的时候必须赋值（初始化）
-
 ### 数据类型
-
-> 计算机世界中的万事成物都是数据。
 
 计算机程序可以处理大量的数据，为了方便数据的管理，将数据分成了不同的类型：
 
