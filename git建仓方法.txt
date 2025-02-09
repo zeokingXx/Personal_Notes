@@ -1,0 +1,6 @@
+git add .
+git commit -m first
+git push
+在已经建好仓库的情况下进行上传
+
+git 
